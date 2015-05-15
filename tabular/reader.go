@@ -6,6 +6,7 @@ import (
 	"github.com/omakoto/mlib"
 	"io"
 	"regexp"
+	"strings"
 )
 
 type LineReader interface {
@@ -54,7 +55,10 @@ func RegexpSeparatedReader(origReader io.Reader, pattern string) <-chan []string
 		defer close(out)
 		for {
 			line, err := r.ReadString('\n')
-			out <- re.Split(line, -1)
+			line = strings.TrimRight(line, "\r\n")
+			if line != "" || err == nil {
+				out <- re.Split(line, -1)
+			}
 			if err == io.EOF {
 				return
 			}
