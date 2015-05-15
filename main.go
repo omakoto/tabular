@@ -25,10 +25,10 @@ func main() {
 		reader = tabular.CsvReader(in)
 	case *useTsv:
 		reader = tabular.TsvReader(in)
-	case *useSpaceSeparated:
-		reader = tabular.RegexpSeparatedReader(in, `\s+`)
 	case *useCustomSeparator != "":
 		reader = tabular.RegexpSeparatedReader(in, *useCustomSeparator)
+	case *useSpaceSeparated: // Default, check it last.
+		reader = tabular.RegexpSeparatedReader(in, `\s+`)
 	}
 
 	for l := range tabular.Tabular(reader) {
