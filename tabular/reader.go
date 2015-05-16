@@ -24,6 +24,7 @@ func CsvReader(origReader io.ReadCloser) <-chan []string {
 
 func xsvReader(origReader io.ReadCloser, sep rune) <-chan []string {
 	r := csv.NewReader(origReader)
+	r.FieldsPerRecord = -1
 	r.Comma = sep
 	out := make(chan []string)
 
