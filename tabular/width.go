@@ -1,7 +1,7 @@
 package tabular
 
 import (
-	"github.com/omakoto/mlib"
+	// "github.com/omakoto/mlib"
 	"golang.org/x/text/width"
 	// "unicode/utf8"
 )
@@ -22,7 +22,7 @@ func stringWidth(s string) int {
 		}
 		i += size
 	}
-	mlib.Debug("  string=\"%s\", width=%d\n", s, w)
+	// mlib.Debug("  string=\"%s\", width=%d\n", s, w)
 
 	return w
 }
