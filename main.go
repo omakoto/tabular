@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/omakoto/bashcomp"
 	"github.com/omakoto/mlib"
 	"github.com/omakoto/tabular/tabular"
 )
@@ -16,6 +17,7 @@ var (
 
 func main() {
 	flag.Parse()
+	bashcomp.HandleBashCompletion()
 
 	in := mlib.GetFilesReaderFromArgs()
 
