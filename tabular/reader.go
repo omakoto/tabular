@@ -3,8 +3,8 @@ package tabular
 import (
 	"bufio"
 	"encoding/csv"
-	"github.com/omakoto/mlib"
 	"io"
+	"log"
 	"regexp"
 	"strings"
 )
@@ -37,7 +37,7 @@ func xsvReader(origReader io.ReadCloser, sep rune) <-chan []string {
 				return
 			}
 			if err != nil {
-				mlib.Warn("Error reading input: \n", err)
+				log.Printf("Error reading input: %s\n", err)
 				return
 			}
 			out <- rec
@@ -64,7 +64,7 @@ func RegexpSeparatedReader(origReader io.Reader, pattern string) <-chan []string
 				return
 			}
 			if err != nil {
-				mlib.Warn("Error reading input: \n", err)
+				log.Printf("Error reading input: %s\n", err)
 				return
 			}
 		}

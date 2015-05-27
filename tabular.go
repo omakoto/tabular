@@ -6,6 +6,7 @@ import (
 	"github.com/omakoto/bashcomp"
 	"github.com/omakoto/mlib"
 	"github.com/omakoto/tabular/tabular"
+	"log"
 )
 
 var (
@@ -16,6 +17,9 @@ var (
 )
 
 func main() {
+	log.SetPrefix("tabular: ")
+	log.SetFlags(0)
+
 	flag.Parse()
 	bashcomp.HandleBashCompletion()
 
